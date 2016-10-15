@@ -1,5 +1,5 @@
 import {connect, loadWeather} from './store'
-import moment from 'moment'
+import fecha from 'fecha'
 import Map from 'es6-map';
 import './weather_app.css'
 
@@ -14,7 +14,7 @@ export default class {
         const days = new Map() // use Map as need we to maintain insertion order
 
         list.forEach((w) => {
-            const day = moment(w.dt * 1000).format("dddd Do MMMM")
+            const day = fecha.format(w.dt * 1000, "dddd Do MMMM")
             if (!days[day]) days[day] = []
             days[day].push(w)
         })
@@ -34,7 +34,7 @@ export default class {
             $scope.weatherRows = Object.keys(weatherRows).map((day, index) => ({
                 city: weather.city && weather.city.name,
                 data: weatherRows[day].map( (row) => ({
-                  time: `${moment(row.dt*1000).format("HH:mm")}`,
+                  time: `${fecha.format(row.dt*1000, "HH:mm")}`,
                   icon: `http://openweathermap.org/img/w/${row.weather[0].icon}.png`,
                   iconName: row.weather[0].description,
                   temp: `${Math.round(row.main.temp)}°C`,
