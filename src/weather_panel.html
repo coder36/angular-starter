@@ -1,0 +1,21 @@
+<section class="widget" id="{{$ctrl.toSnakeCase($ctrl.weather.day)}}">
+  <div class="container">
+    <div ng-if="$ctrl.weather.today == true">
+      <div>
+        <h2 class="city">{{$ctrl.weather.city}}</h2>
+        <h3 class="day">Today</h3>
+      </div>
+    </div>
+    <div ng-if="ctrl.weather.today != true">
+      <h3 class="day">{{$ctrl.weather.day}}</h3>
+    </div>
+
+    <div ng-repeat="d in $ctrl.weather.data">
+    <div key={time} class="row weatherRow">
+        <time class="timestamp col-3">{{d.time}}</time>
+        <div class="icon col-3"><img ng-src="{{d.icon}}" ng-alt="d.iconName" ng-title="d.iconName"/></div>
+        <div class="temp col-3">{{d.temp}}</div>
+        <div class="windspeed col-3"><img ng-style="d.arrowStyling" src="/arrow.svg" ng-alt="d.windDirection" ng-title="d.windDirection"/>{{d.windSpeed}}</div>
+    </div>
+  </div>
+</section>
