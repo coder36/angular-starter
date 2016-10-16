@@ -11,13 +11,15 @@
     "angular-ui-router": "^0.3.1",
     "es6-map": "^0.1.4",
     "fecha": "^2.3.0",
+    "pushstate-server": "^2.1.0",
     "redux": "^3.6.0",
     "redux-thunk": "^2.1.0",
     "whatwg-fetch": "^1.0.0"
   },
   "scripts": {
     "start_in_test_mode": "ANGULAR_APP_API=http://localhost:7001/responses/api react-scripts start",
-    "start": "react-scripts start",
+    "start": "PORT=8080 pushstate-server build",
+    "dev": "react-scripts start",
     "build": "react-scripts build"
   }
 }
